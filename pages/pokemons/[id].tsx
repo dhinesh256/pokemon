@@ -84,9 +84,9 @@ export default function Details() {
           <div className={styles.type}>{pokemon.type.join(", ")}</div>
           <div>
               {pokemon.stats.map(({ name, value }) => (
-                <div className="row">
-                    <div className="col">{name} - {value}</div>
-                </div>
+                
+                    <div className="col" key={name}>{name} - {value}</div>
+                
               ))}
           </div>
         </div>
