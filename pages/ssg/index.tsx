@@ -4,26 +4,27 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../styles/Home.module.css";
 
+export async function getStaticProps() {
+  const resp = await fetch(
+    "https://jherr-pokemon.s3.us-west-1.amazonaws.com/index.json"
+  );
+
+  return {
+    props: {
+      pokemon: await resp.json(),
+    },
+  };
+}
 type poke = {
     id: number,
-    name: string,
-    image: string
-  
+    name: String,
+    image: String,
 }
-export default function Home() {
 
-  // const [pokemon, setpokemon] = useState<poke[]>([])
-  const [pokemon, setpokemon] = useState([])
 
-  useEffect(()=>{
-    async function getPokemon() {
-        const resp = await fetch(
-          "https://jherr-pokemon.s3.us-west-1.amazonaws.com/index.json"
-        );
-        setpokemon(await resp.json())
-    }
-    getPokemon()
-  },[])
+export default function Home(props: { pokemon: poke[]; }) {
+
+    const {pokemon} = props 
   return (
     <div className={styles.container}>
       <Head>
@@ -33,11 +34,11 @@ export default function Home() {
       <div className={styles.grid}>
         {pokemon.map((pokemon:poke) => (
           <div className={styles.card} key={pokemon.id}>
-            <Link href={`/pokemon-csr/${pokemon.id}`}>
+            <Link href={`/pokemon-ssg/${pokemon.id}`}>
               <a>
                 <img
                   src={`https://jherr-pokemon.s3.us-west-1.amazonaws.com/${pokemon.image}`}
-                  alt={pokemon.name}
+                  // alt={pokemon.name}
                   style={{width:100,height:100}}
                 />
                 <h3>{pokemon.name}</h3>

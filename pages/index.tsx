@@ -13,8 +13,12 @@ export default function Home() {
       <Head>
         <title>Pokemon List</title>
       </Head>
-     
-      <Link href={`/csr`}>Client side rendering</Link>       
+     <div className={styles.links}>
+        <div><Link href={`/csr`}>Client side rendering</Link></div>
+        <div><Link href={`/ssr`}>Server side rendering</Link></div> 
+        <div><Link href={`/ssg`}>Static site generation</Link></div> 
+     </div>
+            
     </div>
   );
 }
