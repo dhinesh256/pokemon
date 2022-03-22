@@ -31,7 +31,7 @@ export default function Home() {
       </Head>
       <h2>Pokemon List</h2>
       <div className={styles.grid}>
-        {pokemon.map((pokemon:poke) => (
+        {pokemon.slice(0,50).map((pokemon:poke) => (
           <div className={styles.card} key={pokemon.id}>
             <Link href={`/pokemon-csr/${pokemon.id}`}>
               <a>

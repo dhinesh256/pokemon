@@ -6,15 +6,23 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 15px;
+ 
 }
 .card{
   justify-content: center;
   align-items: center;
-  border-color: black;
-}
+  }
 .card img {
   max-height: 200px;  
 }
 .links{
   flex-direction: column;
+}
+.search {
+  width: 60%;
+  border: 1px solid #aaa;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  font-size: 1.2rem;
+  margin: 1rem;
 }

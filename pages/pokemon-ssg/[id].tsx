@@ -26,11 +26,12 @@ export async function getStaticPaths() {
     "https://jherr-pokemon.s3.us-west-1.amazonaws.com/index.json"
   );
   const pokemon = await resp.json();
-
+  const paths = [{params:{id:"1",}},{params:{id:"2",}},{params:{id:"3",}}]
   return {
-    paths: pokemon.map((pokemon:poke) => ({
-      params: { id: pokemon.id.toString() },
-    })),
+    // paths: pokemon.map((pokemon:poke) => ({
+    //   params: { id: pokemon.id.toString() },
+    // })),
+    paths,
     fallback: false,
   };
 }
